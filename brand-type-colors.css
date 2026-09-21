@@ -1,0 +1,119 @@
+/* V5.4 — deep ocean blue, violet and magenta, from the supplied brand references. */
+:root {
+  --text: #f3f6ff;
+  --muted: #cbd5e8;
+  --accent: #efb4df;
+  --ink: #203858;
+  --brand-blue: #304c85;
+  --brand-purple: #53558b;
+  --brand-caption: #46556c;
+  --brand-dawn: #e2bfdc;
+}
+
+.sand p,
+.sand .facts span { color: var(--brand-caption); }
+.sand .eyebrow,
+.sand .text-link { color: var(--brand-purple); }
+.sand h1, .sand h2, .sand h3,
+.sand summary, .sand .facts strong,
+.sand .stage-number { color: var(--ink); }
+.product-accordions summary > span { color: var(--brand-purple); }
+.sand .note, .sand .gallery-hint,
+.sand .purchase-note { color: var(--brand-caption); }
+.hero .eyebrow { color: var(--brand-dawn); }
+
+.button { background: var(--text); color: var(--ink); }
+.button:hover { background: #dce2ff; color: var(--ink); }
+.dark-button { background: var(--ink); color: var(--text); }
+.dark-button:hover { background: var(--brand-blue); color: var(--text); }
+.mode-switch button[aria-pressed="true"] { color: var(--ink); }
+.gallery-choices button[aria-pressed="true"] { color: var(--brand-blue); }
+.gallery-choices button[aria-pressed="true"] img,
+.gallery-choices button:hover img { border-color: var(--brand-blue); }
+.sand a:focus-visible,
+.sand button:focus-visible,
+.sand summary:focus-visible { outline-color: var(--brand-blue); }
+.dialog-close { background: #e9edfa; color: var(--ink); }
+.dialog-bottom button:hover { background: #e9edfa; }
+.sand ::selection, #image-dialog ::selection { background: #203858; color: #f3f6ff; }
+::selection { background: #efb4df; color: #203858; }
+
+/* All former sand / brown surfaces now use the dark brand palette. */
+:root {
+  --bg: #10182f;
+  --deep: #0b1226;
+  --surface: #23264a;
+  --sand: #1a2345;
+  --line: #595076;
+  --brand-purple: #e7b4ed;
+  --brand-caption: #cbd5e8;
+}
+body { background: var(--bg); }
+.sand { color: var(--text); }
+.sand h1, .sand h2, .sand h3, .sand summary,
+.sand .facts strong, .sand .stage-number { color: var(--text); }
+.product-explorer {
+  background: radial-gradient(ellipse at 100% 15%, #72306580, transparent 65%), linear-gradient(125deg, #192341, #302340);
+}
+.routine { background: linear-gradient(125deg, #101c36, #39223f); }
+.compact-journey, .comparison { background: #342742; }
+.story { background: linear-gradient(110deg, #202d51, #582b52); }
+.purchase {
+  background: linear-gradient(90deg, #101c35ed, #532344c9), url('assets/brand-ocean.png') center 65% / cover;
+}
+.hero-image { object-position: 0% center; }
+.hero-shade { background: linear-gradient(90deg, #0b183a94 0%, #12275033 36%, transparent 58%); }
+.header { background: #0b163e45; }
+.nav-wrap { border-color: #bac8ff40; }
+.hero .eyebrow { color: #f1c4e5; }
+.hero .lead, .hero .micro, .hero-bottom { color: #e0e6f8; }
+.dark-button, .hero-copy .button { background: linear-gradient(110deg, #c2b6ff, #efb4df); color: #162343; }
+.dark-button:hover, .hero-copy .button:hover { background: linear-gradient(110deg, #d7ceff, #f7cce9); color: #162343; }
+.gallery-choices button { color: var(--muted); }
+.gallery-choices button[aria-pressed="true"] { color: var(--text); }
+.gallery-choices button[aria-pressed="true"] img,
+.gallery-choices button:hover img { border-color: var(--accent); }
+.product-accordions details,
+.product-accordions details:last-child,
+.product-explorer .facts > div,
+.stages article, .support-links, .support-links a,
+th, td { border-color: var(--line); }
+.stages article:before { background: var(--accent); }
+.mode-switch { border-color: #a181ae; }
+.mode-switch:before { background: linear-gradient(110deg, #c2b6ff, #efb4df); }
+.media-caption { background: #101a36ed; }
+.orbits i { border-color: #c087ba; }
+.orbits i:nth-child(even) { border-color: #6d4e83; }
+.orbits b { background: #6d4e83; }
+.optical { background: radial-gradient(ellipse, #b4468e3d, #6150ac12 45%, transparent 70%); }
+thead { background: #51395f; color: var(--text); }
+tbody tr:nth-child(odd) { background: #e6b4ed0b; }
+.purchase-dock { background: linear-gradient(110deg, #10192ff5, #33213cf5); border-color: #946a9480; }
+.sand a:focus-visible, .sand button:focus-visible,
+.sand summary:focus-visible { outline-color: var(--accent); }
+.sand ::selection { background: #efb4df; color: #162343; }
+.expand-icon { border-color: #c2cbe5; background: #f4f6fff2; }
+#image-dialog { background: #f3f6ff; }
+#image-dialog::backdrop { background: #081022ed; }
+.dialog-bottom button { border-color: #7a86b5; }
+/* Match the wearing gallery's rounded image treatment. */
+:root { --media-radius: 16px; }
+.gallery-main, .routine-media, .purchase-photo {
+  border-radius: var(--media-radius);
+  overflow: hidden;
+  isolation: isolate;
+}
+.gallery-choices img { border-radius: 12px; }
+@media(max-width:700px) {
+  :root { --media-radius: 12px; }
+  .gallery-choices img { border-radius: 8px; }
+}
+@media(min-width:601px) and (max-width:1000px) {
+  .hero-image { object-position: 40% center; }
+}
+@media(max-width:600px) {
+  .header { background: #0b163e80; }
+  .hero-image { object-position: 64% center; }
+  .hero-shade { display: none; }
+  .hero-copy { background: linear-gradient(135deg, #12213e, #40233f); }
+}
