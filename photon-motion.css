@@ -65,3 +65,14 @@
   .optical .orbits i:nth-child(6) { transform: rotate(140deg); }
   .optical .orbits i:nth-child(8) { transform: rotate(300deg); }
 }
+
+/* A dispersed field adds irregular motion behind the wavelength label. */
+.photon-field { position: absolute; inset: -3%; overflow: hidden; border-radius: 50%; pointer-events: none; }
+.photon-speck { position: absolute; inset: 0; opacity: 0; }
+.photon-speck::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: var(--speck-size); height: var(--speck-size); border-radius: 50%;
+  background: var(--speck-color);
+  box-shadow: 0 0 5px 1px var(--speck-color), 0 0 12px color-mix(in srgb, var(--speck-color) 45%, transparent);
+}
+@media (prefers-reduced-motion: reduce) { .photon-field { display: none; } }
