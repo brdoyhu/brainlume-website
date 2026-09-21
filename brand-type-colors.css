@@ -117,3 +117,14 @@ tbody tr:nth-child(odd) { background: #e6b4ed0b; }
   .hero-shade { display: none; }
   .hero-copy { background: linear-gradient(135deg, #12213e, #40233f); }
 }
+
+/* Keep the walkthrough aligned with the image and place its detail link at right. */
+.routine-bottom { display: grid; grid-template-columns: minmax(0,1.65fr) minmax(0,1fr); column-gap: 56px; align-items: start; margin-top: 37px; }
+.routine-walkthrough { min-width: 0; }
+.routine-bottom .step-choices { width: 100%; max-width: none; margin-top: 0; gap: 24px; }
+.routine-bottom .step-choices button { min-width: 0; gap: 12px; }
+.routine-bottom #step-description { max-width: none; }
+.routine-bottom .controller-link { justify-self: center; margin-top: 12px; }
+@media (max-width:1190px) { .routine-bottom { column-gap: 35px; } .routine-bottom .step-choices { gap: 16px; } }
+@media (max-width:900px) { .routine-bottom { grid-template-columns: minmax(0,1fr); gap: 8px; } .routine-bottom .controller-link { justify-self: end; margin-top: 0; } }
+@media (max-width:600px) { .routine-bottom { margin-top: 32px; } .routine-bottom .step-choices { gap: 12px; } }
