@@ -1,0 +1,67 @@
+/* Abstract light motion, not a simulation of photon paths or tissue penetration. */
+.optical { isolation: isolate; }
+.optical .orbits { pointer-events: none; }
+.optical .orbits b:nth-of-type(2) { transform: rotate(60deg); }
+.optical .orbits b:nth-of-type(3) { transform: rotate(120deg); }
+.optical .orbits i:nth-child(2n) {
+  --photon-color: #b4acff;
+  animation: photon-orbit var(--orbit-time, 9s) linear infinite;
+  animation-delay: var(--orbit-phase, -2s);
+  animation-play-state: paused;
+}
+.optical .orbits i:nth-child(2) { --orbit-time: 12s; --orbit-phase: -3s; }
+.optical .orbits i:nth-child(4) { --orbit-time: 10s; --orbit-phase: -7s; --photon-color: #f0a4d6; animation-direction: reverse; }
+.optical .orbits i:nth-child(6) { --orbit-time: 8s; --orbit-phase: -1s; }
+.optical .orbits i:nth-child(8) { --orbit-time: 7s; --orbit-phase: -4s; --photon-color: #efa0d4; animation-direction: reverse; }
+.optical .orbits i:nth-child(2n)::after {
+  content: ''; position: absolute; width: 6px; height: 6px;
+  top: -3px; left: calc(50% - 3px); border-radius: 50%;
+  background: #fcf0ff;
+  box-shadow: 0 0 5px 2px var(--photon-color), 0 0 16px 4px color-mix(in srgb, var(--photon-color) 50%, transparent);
+}
+.optical .orbits i:nth-child(2n)::before {
+  content: ''; position: absolute; inset: -1px; border-radius: 50%;
+  background: conic-gradient(from -42deg, transparent 0deg, var(--photon-color) 41deg, transparent 43deg);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+  opacity: .75;
+}
+.photon-pulse {
+  position: absolute; inset: 0; border: 1px solid #d78bd7; border-radius: 50%;
+  background: radial-gradient(circle, transparent 45%, #b37bde12 70%, transparent 72%);
+  animation: photon-ripple 6s ease-out infinite; animation-play-state: paused;
+  pointer-events: none;
+}
+.photon-pulse.second { animation-delay: -3s; border-color: #a8a3ff; }
+.optical .wavelength { z-index: 2; }
+.optical .optical-controls {
+  position: absolute; bottom: -18px; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+}
+.optical .optical-controls small { position: static; font-size: 9px; letter-spacing: .02em; }
+.photon-toggle {
+  border: 1px solid #a594c166; border-radius: 24px; background: #10162b;
+  color: #e3c9ed; min-height: 36px; padding: 6px 12px; font-size: 10px;
+  display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+}
+.photon-toggle:hover { background: #2e2242; border-color: #c3a4da; }
+.photon-toggle:disabled { cursor: default; opacity: .7; }
+.photon-toggle-icon { width: 7px; height: 9px; border-left: 2px solid currentColor; border-right: 2px solid currentColor; }
+.photon-toggle[aria-pressed="true"] .photon-toggle-icon { height: 0; border: 5px solid transparent; border-right: 0; border-left: 7px solid currentColor; }
+.optical.is-playing .orbits i:nth-child(2n),
+.optical.is-playing .photon-pulse { animation-play-state: running; }
+@keyframes photon-orbit { to { transform: rotate(360deg); } }
+@keyframes photon-ripple { 0% { transform: scale(.24); opacity: 0; } 20% { opacity: .38; } 100% { transform: scale(1.04); opacity: 0; } }
+@media (max-width: 600px) {
+  .optical .optical-controls { bottom: -10px; gap: 8px; }
+  .optical .optical-controls small { font-size: 8px; }
+  .photon-toggle { min-height: 44px; padding: 6px 10px; }
+  .optical .orbits i:nth-child(2n)::after { width: 5px; height: 5px; top: -2.5px; left: calc(50% - 2.5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .optical .orbits i:nth-child(2n), .optical .photon-pulse { animation: none !important; }
+  .optical .photon-pulse { opacity: 0; }
+  .optical .orbits i:nth-child(2) { transform: rotate(70deg); }
+  .optical .orbits i:nth-child(4) { transform: rotate(210deg); }
+  .optical .orbits i:nth-child(6) { transform: rotate(140deg); }
+  .optical .orbits i:nth-child(8) { transform: rotate(300deg); }
+}
